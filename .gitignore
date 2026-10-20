@@ -1,2 +1,4 @@
 .vscode
 forcetrue_agent/target
+forcetrue_agent/.gradle
+forcetrue_agent/build

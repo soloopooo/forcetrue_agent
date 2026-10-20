@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '9.6.1'
+}
+
+group = 'ooo.soloop.patch.forcetrueagent'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'net.bytebuddy:byte-buddy:1.18.15'
+}
+
+tasks.jar {
+    manifest {
+        attributes(
+            'Premain-Class': 'ooo.soloop.patch.forcetrueagent.ForceTrueAgent',
+            'Can-Redefine-Classes': 'true',
+            'Can-Retransform-Classes': 'true'
+        )
+    }
+}
+
+
+tasks.shadowJar {
+    archiveClassifier.set('')
+
+    manifest {
+        attributes(
+            'Premain-Class': 'ooo.soloop.patch.forcetrueagent.ForceTrueAgent',
+            'Can-Redefine-Classes': 'true',
+            'Can-Retransform-Classes': 'true'
+        )
+    }
+}

@@ -16,7 +16,7 @@ public class ForceTrueAgent {
                     .method(ElementMatchers.named("checkChinaMainlandNetwork")
                             .and(ElementMatchers.takesNoArguments())) 
                     
-                    .intercept(FixedValue.value(true))
+                    .intercept(FixedValue.value(false))
             )
             .installOn(inst);
             

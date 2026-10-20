@@ -12,10 +12,12 @@ public class ForceTrueAgent {
             .type(ElementMatchers.named("org.jackhuang.hmcl.util.RegionUtils"))
             .transform((builder, typeDescription, classLoader, module, protectionDomain) -> 
                 builder
-                    
-                    .method(ElementMatchers.named("checkChinaMainlandNetwork")
-                            .and(ElementMatchers.takesNoArguments())) 
-                    
+                    .method(
+                        ElementMatchers.named("checkMachineIsChinaMainland")
+                            .or(ElementMatchers.named("isIsChinaMainlandMachine"))
+                            .or(ElementMatchers.named("checkChinaMainlandNetwork"))
+                            .or(ElementMatchers.named("isIsChinaMainlandNetwork"))
+                    )
                     .intercept(FixedValue.value(false))
             )
             .installOn(inst);
